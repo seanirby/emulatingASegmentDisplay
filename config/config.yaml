@@ -1,5 +1,18 @@
 #config_version=5
 
+window:
+  width: 800
+  height: 240
+  # This applies the glow shader to our display.  You can read more
+  # about the settings for this effect here:
+  # http://docs.missionpinball.org/en/dev/displays/widgets/display/effects.html?highlight=glow#settings-for-glow-effect
+  effects:
+    - type: glow
+      blur_size: 5.0
+      intensity: .6
+      glow_speed: 1.0
+      glow_amplitude: .2
+
 displays:
   window:
      width: 800
