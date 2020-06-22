@@ -1,7 +1,8 @@
-This repo is meant to accompany my tutorial on emulating a segment display with the Mission Pinball Framework.  If you'd like to follow along do the following
+This repo is meant to accompany [[https://spacejunk.cc/2020/06/22/emulating-a-segment-display/][my tutorial on emulating a segment display with the Mission Pinball Framework]].  If you'd like to follow along do the following:
 
+- [[http://docs.missionpinball.org/en/latest/install/index.html][Install MPF]] if you haven't already
 - Clone this repo by running 'git clone https://github.com/seanirby/emulatingASegmentDisplay' in your terminal
 - Navigate to the machine folder with 'cd emulatingASegmentDisplay'
 - Start the game with 'mpf both -x'
 
-Each section in the tutorial is stored as a branch in this repo so make sure you've switch to the right branch before
+Each section in the tutorial is stored as a branch in this repo so make sure you've switched to the right branch before running mpf.  For example, to see code for part 2 of the tutorial run 'git checkout part2' in your terminal
