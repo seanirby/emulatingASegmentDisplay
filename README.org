@@ -1,0 +1,7 @@
+This repo is meant to accompany my tutorial on emulating a segment display with the Mission Pinball Framework.  If you'd like to follow along do the following
+
+- Clone this repo by running 'git clone https://github.com/seanirby/emulatingASegmentDisplay' in your terminal
+- Navigate to the machine folder with 'cd emulatingASegmentDisplay'
+- Start the game with 'mpf both -x'
+
+Each section in the tutorial is stored as a branch in this repo so make sure you've switch to the right branch before
