@@ -1,59 +1,102 @@
 #config_version=5
 
-# This defines our display.  New slides will automatically be placed
-# here since this is the only display.
 displays:
   window:
      width: 800
      height: 240
 
-# This section defines some common widget settings so we don't
-# duplicate them.
-# 
-# Read more about widget settings at the link below:
-# http://docs.missionpinball.org/en/latest/displays/widgets/common_settings.html
 widget_styles:
   segment_common:
     x: 0
     y: 200
-    # 14 segment font used for displaying alphanumeric characters
     font_name: DSEG14Classic-Italic
     font_size: 60
     anchor_x: left
     anchor_y: top
+
+# This section defines a machine variable called 'display_text'
+machine_vars:
+  display_text:
+    initial_value: '!!!!!!!!!!!!!!!!'
+    value_type: str
+    persist: False
     
 widgets:
   display_text:
     - type: text
-      # The DSEG14Classic-Italic font maps the exclamation point to a
-      # blank space
-      text: "PRESS!START!!!!!"
+      # This ties the text of our widget to the machine variable above
+      text: (machine|display_text)
       color: orange
       style: segment_common
       z: 2
   unlit_segments:
     - type: text
-      # The DSEG14Classic-Italic font maps the '~' character to the
-      # 'all on' character
       text: "~~~~~~~~~~~~~~~~"
-      # This widget is given a dark gray color so it's just barely visible
       color: 131313
       style: segment_common
-      # The widget is given a lower z value because it needs to be
-      # behind the display text
       z: 1
-  
-# This section defines a slide called 'press_start' and inserts the
-# two widgets defined above into it
+
+# This section defines a show called 'left_to_right'. Each step in the
+# show sets the 'display_text' variable to a new value.  We didn't
+# specify a duration for each of the so each step will run for the
+# default duration of 1 second.
+shows:
+  left_to_right:
+    - variables:
+        display_text:
+          action: set_machine
+          string: 'PRESS!START!!!!!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!PRESS!START!!!!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!!PRESS!START!!!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!!!PRESS!START!!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!!!!PRESS!START!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!!!!!PRESS!START'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!!!!PRESS!START!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!!!PRESS!START!!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!!PRESS!START!!!'
+    - variables:
+        display_text:
+          action: set_machine
+          string: '!PRESS!START!!!!'
+
+# This section tells MPF to start our show above when the 'init_done'
+# event is fired.  This event is fired shortly after our game starts.
+show_player:
+  init_done:
+    left_to_right:
+      # We multiply the speed of our show so it runs 10 times as fast
+      speed: 10
+
 slides:
   press_start:
     widgets:
     - widget: display_text
     - widget: unlit_segments
 
-# This section tells MPF to display our 'press_start' slide whenever
-# the init_done event is fired.  In other words, when our game is done
-# initializing, show our slide.
 slide_player:
   init_done: press_start
     
