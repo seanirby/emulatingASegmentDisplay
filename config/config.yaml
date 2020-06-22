@@ -89,7 +89,7 @@ show_player:
   init_done:
     left_to_right:
       # We multiply the speed of our show so it runs 10 times as fast
-      speed: 10
+      speed: 3
 
 slides:
   press_start:
